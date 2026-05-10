@@ -1,0 +1,68 @@
+{
+  "site": {
+    "title": "Milan Foundation",
+    "base_url": "https://milanfoundation.ngo",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/logo/milan_foundation_logo.png",
+    "logo_darkmode": "/logo/milan_foundation_logo.png",
+    "logo_width": "150",
+    "logo_height": "50",
+    "logo_text": "Your Company Logo"
+  },
+  "nav": {
+    "logo": {
+      "url": "/",
+      "src": "/images/logo.png",
+      "alt": "Company Logo",
+      "title": "Milan Foundation"
+    },
+    "menu": [
+      {
+        "label": "Home",
+        "url": "/"
+      },
+      {
+        "label": "Services",
+        "url": "/services"
+      },
+      {
+        "label": "Blog",
+        "url": "/blog"
+      },
+      {
+        "label": "Contact",
+        "url": "/contact"
+      }
+    ]
+  },
+  "settings": {
+    "search": true,
+    "sticky_header": false,
+    "theme_switcher": true,
+    "default_theme": "light",
+    "pagination": 6,
+    "summary_length": 200,
+    "blog_folder": "blog"
+  },
+  "params": {
+    "contact_form_action": "#",
+    "copyright": "Designed And Developed by [Milan Foundation](https://milanfoundation.ngo)"
+  },
+  "navigation_button": {
+    "enable": true,
+    "label": "Get in Touch",
+    "link": "/contact"
+  },
+  "disqus": {
+    "enable": false,
+    "shortname": "",
+    "settings": {}
+  },
+  "metadata": {
+    "meta_author": "Milan Foundation",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Milan Foundation - Learning, Growing, Achieving. Dedicated to community empowerment and support."
+  }
+}

@@ -1,0 +1,235 @@
+html {
+  @apply text-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply bg-body dark:bg-darkmode-body font-primary font-normal leading-relaxed text-text dark:text-darkmode-text;
+}
+
+// =============================================================================
+// TITLE CLASS - Based on actual wcf--title font-size range (115px to 30px)
+// =============================================================================
+
+// Variables for title styling
+$title-font-family: 'Bebas Neue', 'Raleway', sans-serif;
+$title-font-weight: 700;
+$title-line-height: 1.4em;
+$title-text-transform: capitalize;
+$title-color: #ffffff;
+
+// Responsive breakpoints
+$mobile: 320px;
+$mobile-large: 480px;
+$tablet: 768px;
+$desktop: 992px;
+$desktop-large: 1200px;
+$desktop-xl: 1400px;
+
+.title {
+  font-family: $title-font-family;
+  font-weight: $title-font-weight;
+  line-height: $title-line-height;
+  text-transform: $title-text-transform;
+  color: $title-color;
+  margin: 0 0 1rem 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  // Base mobile size (320px and up) - smallest size
+  font-size: 36px;
+  
+  // Mobile Large (480px and up)
+  @media (min-width: #{$mobile-large}) {
+    font-size: 40px;
+  }
+  
+  // Tablet (768px and up)
+  @media (min-width: #{$tablet}) {
+    font-size: 45px;
+  }
+  
+  // Desktop (992px and up)
+  @media (min-width: #{$desktop}) {
+    font-size: 65px;
+  }
+  
+  // Desktop Large (1200px and up)
+  @media (min-width: #{$desktop-large}) {
+    font-size: 85px;
+  }
+  
+  // Desktop XL (1400px and up) - largest size matching your CSS
+  @media (min-width: #{$desktop-xl}) {
+    font-size: 115px;
+  }
+  
+  // Title size variants
+  &--small {
+    font-size: 20px;
+    
+    @media (min-width: #{$mobile-large}) {
+      font-size: 24px;
+    }
+    
+    @media (min-width: #{$tablet}) {
+      font-size: 28px;
+    }
+    
+    @media (min-width: #{$desktop}) {
+      font-size: 35px;
+    }
+    
+    @media (min-width: #{$desktop-large}) {
+      font-size: 45px;
+    }
+    
+    @media (min-width: #{$desktop-xl}) {
+      font-size: 55px;
+    }
+  }
+  
+  &--large {
+    font-size: 40px;
+    
+    @media (min-width: #{$mobile-large}) {
+      font-size: 50px;
+    }
+    
+    @media (min-width: #{$tablet}) {
+      font-size: 70px;
+    }
+    
+    @media (min-width: #{$desktop}) {
+      font-size: 90px;
+    }
+    
+    @media (min-width: #{$desktop-large}) {
+      font-size: 110px;
+    }
+    
+    @media (min-width: #{$desktop-xl}) {
+      font-size: 130px;
+    }
+  }
+  
+  &--hero {
+    // Hero variant spanning the full range (30px to 115px+)
+    font-size: 35px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2em;
+    
+    @media (min-width: #{$mobile-large}) {
+      font-size: 45px;
+    }
+    
+    @media (min-width: #{$tablet}) {
+      font-size: 65px;
+    }
+    
+    @media (min-width: #{$desktop}) {
+      font-size: 85px;
+    }
+    
+    @media (min-width: #{$desktop-large}) {
+      font-size: 105px;
+    }
+    
+    @media (min-width: #{$desktop-xl}) {
+      font-size: 115px; // Matching your actual CSS maximum
+    }
+  }
+  
+  // Rest of the variants remain the same...
+  &--light { font-weight: 400; }
+  &--medium { font-weight: 500; }
+  &--bold { font-weight: 700; }
+  &--extra-bold { font-weight: 800; }
+  
+  // Color variants
+  &--primary { color: #0D0F30; }
+  &--secondary { color: #252525; }
+  &--muted { color: #505050; }
+  &--white { color: #ffffff; }
+  
+  // Alignment
+  &--center { text-align: center; }
+  &--left { text-align: left; }
+  &--right { text-align: right; }
+}
+
+// Fluid typography using clamp() - matching the actual range
+@supports (font-size: clamp(1rem, 1vw, 1rem)) {
+  .title {
+    &--fluid {
+      font-size: clamp(30px, 6vw, 115px); // Full range from your CSS
+    }
+    
+    &--fluid-small {
+      font-size: clamp(20px, 4vw, 55px);
+    }
+    
+    &--fluid-large {
+      font-size: clamp(40px, 8vw, 130px);
+    }
+    
+    &--fluid-hero {
+      font-size: clamp(30px, 10vw, 115px); // Exact range from your CSS
+    }
+  }
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-secondary font-bold leading-tight text-text dark:text-darkmode-dark;
+}
+
+
+
+h1,
+.h1 {
+  @apply text-h1-sm md:text-h1;
+}
+
+h2,
+.h2 {
+  @apply text-h2-sm md:text-h2 font-bold capitalize leading-[.9] tracking-tight lg:tracking-tighter text-primary;
+}
+
+h3,
+.h3 {
+  @apply text-h3-sm md:text-h3;
+}
+
+h4,
+.h4 {
+  @apply text-h4 font-bold capitalize leading-[.9] tracking-tight;
+}
+
+h5,
+.h5 {
+  @apply text-h5 font-medium;
+}
+
+h6,
+.h6 {
+  @apply text-h6 font-medium;
+}
+
+b,
+strong {
+  @apply font-semibold;
+}
+
+code {
+  @apply after:border-none;
+}

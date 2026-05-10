@@ -1,0 +1,239 @@
+.bg-gradient {
+  @apply bg-gradient-to-b from-[rgba(249,249,249,1)] from-[0.53%] to-white to-[83.28%] dark:from-darkmode-theme-light dark:to-darkmode-body;
+}
+
+.rounded-sm {
+  @apply rounded-[4px];
+}
+.rounded {
+  @apply rounded-[6px];
+}
+.rounded-lg {
+  @apply rounded-[12px];
+}
+.rounded-xl {
+  @apply rounded-[16px];
+}
+
+
+/* Reserve gutter to avoid layout shift */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Default (light) — Firefox standard props */
+html {
+  /* allowed: auto | thin | none */
+  scrollbar-width: thin;
+  /* thumb | track */
+  scrollbar-color: #8F93A1 transparent; /* stroke-elements--light | transparent */
+}
+
+/* Default (light) — WebKit/Blink fallback */
+:root::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+:root::-webkit-scrollbar-track {
+  background: transparent;
+}
+:root::-webkit-scrollbar-thumb {
+  background-color: #8F93A1;         /* stroke-elements--light */
+  border-radius: 1rem;               /* radius-s */
+  border: 2px solid transparent;     /* gap to track */
+  background-clip: padding-box;
+}
+:root::-webkit-scrollbar-thumb:hover {
+  background-color: #797D83;         /* t-muted--light */
+}
+:root::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Optional: stronger scrollbars in specific panels */
+.scrollable { overflow: auto; }
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: #2C2E34 transparent; /* stroke-controls--light */
+}
+.scrollable::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #2C2E34;         /* stroke-controls--light */
+  border-radius: 1rem;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: #44474A;         /* t-medium--light */
+}
+
+
+.input-animate::after {
+    content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  z-index: 999;
+    background: linear-gradient(to right, #B294FF, #57E6E6);
+    background-size: 500% auto;
+  }
+
+/* In your Next.js SCSS module file (e.g., Hero.module.scss) */
+
+.hero {
+  /* --- Mobile-first styles (default) --- */
+  padding: 44px 20px 60px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  
+  
+
+  /* --- Desktop breakpoint (1112px and up) --- */
+  @media (min-width: 1112px) {
+    padding: 80px 23px 0px;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  /* --- Nested H1 Styles --- */
+  h1 {
+    /* --- Mobile-first (Base) styles --- */
+    /* This is from your first rule */
+    font-size: clamp(56px, 5vw, 330px);
+    word-break: break-word;
+    /* margin-bottom will be the browser default here */
+
+    /* --- Tablet breakpoint --- */
+    @media (min-width: 768px) {
+      font-size: clamp(60px, 10vw, 120px);
+      margin-bottom: 10px;
+    }
+    /* --- Desktop breakpoint --- */
+    @media (min-width: 1112px) {
+      font-size: clamp(80px, 8vw, 150px);
+      margin-bottom: 0;
+    }
+  }
+
+  /* --- Nested P Styles --- */
+  p {
+    /* --- All screen (Base) styles --- */
+    width: unset;
+    text-align: center;
+
+    /* --- Desktop breakpoint (1112px) --- */
+    @media (min-width: 1112px) {
+      text-align: left;
+      max-width: 350px;
+      position: absolute;
+      right: 3vw;
+      top: 3vw;
+    }
+  }
+}
+$desktop-breakpoint: 1024px;
+
+.service-post {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto 10px;
+  gap: 10px; // Added the gap you wanted
+
+  // This is the new rule that fixes the desktop wrap
+  @media screen and (min-width: 992px) {
+    > * {
+      // This overrides Tailwind's lg:col-6 (width: 50%)
+      // It makes each column 5px smaller to create space for the 10px gap.
+      // (50% - 5px) + (50% - 5px) + 10px gap = 100%
+      width: calc(50% - 5px) !important;
+    }
+  }
+ 
+
+  
+
+   .content-holder {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    background-color: #fbfaf6;
+    padding: 28px 20px 20px;
+    
+    @media screen and (min-width: 992px) {
+      padding: 75px;
+    }
+
+     h2 {
+      color: #252525; // Default dark color for light background
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+      margin-bottom: 32px;
+      max-width: 500px;
+      font-size: 36px; // Mobile-first font size
+
+      @media screen and (min-width: 992px) {
+        font-size: 72px; // Desktop font size
+      }
+    }
+     p {
+      color: #252525; // Default dark color for light background
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 130%;
+      max-width: 500px;
+      margin-bottom: 1rem;
+    }
+    .tags-container {
+      // --- Mobile styles (new) ---
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative; // Tags flow in document
+      bottom: auto;
+      left: auto;
+      width: 100%; // Full width
+      margin-top: 15px; // Space after paragraph
+
+      // --- Desktop styles (override) ---
+      @media screen and (min-width: 992px) {
+        position: absolute; // Absolute position on desktop
+        bottom: 48px;
+        left: 75px; // Position relative to desktop padding
+        width: 80%;
+        margin-top: 0; // Reset mobile margin
+      }
+
+      .tag {
+        background-color: transparent;
+        color: #252525; // Default dark color for light background
+        border: 1px solid rgba(0, 0, 0, 0.3); // Default dark border
+        border-radius: 1000px;
+        padding: 10px 24px;
+        text-align: center;
+        white-space: nowrap;
+        cursor: default;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: .42px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

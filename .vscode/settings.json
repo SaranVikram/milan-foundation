@@ -1,0 +1,54 @@
+{
+  "files.associations": {
+    "*.mdx": "markdown"
+  },
+
+  "telemetry.telemetryLevel": "off",
+
+  // Enables quick suggestions while typing
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+
+  // Path autocomplete settings (helpful for aliases like @components)
+  "path-intellisense.mappings": {
+    "@components": "${workspaceFolder}/src/components"
+  },
+
+  // Tab auto-complete suggestions for imports
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.tabCompletion": "on",
+
+  // Go to definition with Ctrl+Click
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleReferences": "goto",
+
+  // Disable JS validation for better React experience
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": true,
+
+  // Code actions on save (enables ESLint auto-fixing on save)
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+
+  // ESLint status visibility
+  "eslint.alwaysShowStatus": true,
+
+  // JSX auto-closing tags
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true,
+
+  // Auto-save on file change focus
+  "files.autoSave": "onFocusChange",
+
+  // Format on save
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true
+}

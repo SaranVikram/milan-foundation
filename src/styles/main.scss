@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+// =============================================================================
+// MAIN SCSS FILE
+// =============================================================================
+
+// 1. Base & Configuration
+@import 'base';
+
+// 2. Components
+@import 'buttons';
+@import 'navigation';
+@import 'components';
+@import 'search';
+
+// 3. Utilities (should come last to override other styles)
+@import 'utilities';
