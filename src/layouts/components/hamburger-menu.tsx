@@ -168,7 +168,18 @@ export const HamburgerMenu: React.FC = () => {
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="w-full h-full border-l border-slate-100">
+              <div className="w-full h-full border-l border-slate-100 relative">
+                {/* Close Button for Mobile */}
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="absolute top-6 right-6 z-[60] p-3 rounded-xl bg-slate-50 text-slate-900 md:hidden shadow-md"
+                  aria-label="Close menu"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
                 <FlowingMenu items={menuItems} onItemClick={() => setIsOpen(false)} />
               </div>
             </motion.div>

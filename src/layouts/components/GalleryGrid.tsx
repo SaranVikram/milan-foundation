@@ -30,7 +30,7 @@ export default function GalleryGrid() {
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
             <span className="text-white/70 text-sm mb-1">{image.category}</span>
             <h3 className="text-white font-bold text-lg">{image.alt}</h3>
           </div>

@@ -47,9 +47,9 @@ function AboutUsSection() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-primary rounded-[40px] flex flex-col items-center justify-center text-white z-20 shadow-xl">
-              <span className="text-4xl font-bebas">10+</span>
-              <span className="text-sm uppercase tracking-widest font-bold">Years of Hope</span>
+            <div className="absolute -bottom-2 -right-2 w-24 h-24 md:-bottom-8 md:-right-8 md:w-48 md:h-48 bg-primary rounded-2xl md:rounded-[40px] flex flex-col items-center justify-center text-white z-20 shadow-xl">
+              <span className="text-2xl md:text-4xl font-bebas leading-none">7+</span>
+              <span className="text-[9px] md:text-sm uppercase tracking-widest font-bold text-center px-2 leading-tight">Years of Impact</span>
             </div>
           </motion.div>
 

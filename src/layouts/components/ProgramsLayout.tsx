@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, HeartPulse, Briefcase, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -33,6 +33,21 @@ const ProgramsLayout = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (activeSection) {
+      const activeBtn = navRef.current?.querySelector(`[data-section="${activeSection}"]`);
+      if (activeBtn) {
+        activeBtn.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }
+  }, [activeSection]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -50,7 +65,7 @@ const ProgramsLayout = () => {
       subtitle: "Empowering Minds, Shaping Futures",
       description: "We provide comprehensive educational support to children from marginalized backgrounds. Our programs include remedial classes, school supplies, and scholarship support to ensure every child has the chance to complete their education.",
       icon: <BookOpen className="w-12 h-12 text-primary" />,
-      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=2073&auto=format&fit=crop",
+      image: "/images/boy-reading.webp",
       features: ["Remedial Education Centers", "School Kit Distribution", "Digital Literacy Labs", "Teacher Training Workshops"]
     },
     {
@@ -59,7 +74,7 @@ const ProgramsLayout = () => {
       subtitle: "Ensuring Health for All",
       description: "Our healthcare initiatives focus on providing preventive and primary healthcare services to those who lack access. We organize health camps, awareness sessions, and provide support for critical medical treatments.",
       icon: <HeartPulse className="w-12 h-12 text-primary" />,
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
+      image: "/images/village-health.webp",
       features: ["Mobile Health Vans", "Nutrition Programs", "Maternal & Child Health", "Disability Support"]
     },
     {
@@ -68,7 +83,7 @@ const ProgramsLayout = () => {
       subtitle: "Building Sustainable Livelihoods",
       description: "We empower youth and adults with vocational skills that enhance their employability and entrepreneurial spirit. From computer training to tailoring, our courses are designed to meet market needs.",
       icon: <Briefcase className="w-12 h-12 text-primary" />,
-      image: "https://images.unsplash.com/photo-1542810634-7bc2c7ad442d?q=80&w=2070&auto=format&fit=crop",
+      image: "/images/skill-training.webp",
       features: ["Vocational Training Centers", "Entrepreneurship Support", "Placement Assistance", "Financial Literacy"]
     },
     {
@@ -77,7 +92,7 @@ const ProgramsLayout = () => {
       subtitle: "Fostering Independence and Rights",
       description: "Our women-focused programs aim to provide social and economic empowerment. We advocate for rights, provide vocational training, and support self-help groups to foster financial independence.",
       icon: <Users className="w-12 h-12 text-primary" />,
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop",
+      image: "/images/woman-empowerment.webp",
       features: ["Self-Help Groups (SHGs)", "Legal Awareness", "Leadership Training", "Small Business Grants"]
     }
   ];
@@ -85,12 +100,16 @@ const ProgramsLayout = () => {
   return (
     <div className="bg-white">
       {/* Sticky Sub-Navigation */}
-      <div className="sticky top-0 z-40 bg-[#FFDE00] shadow-sm overflow-x-auto whitespace-nowrap">
+      <div 
+        ref={navRef}
+        className="sticky top-0 z-40 bg-[#FFDE00] shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
+      >
         <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-6 md:gap-12 py-4">
+          <div className="flex md:justify-center justify-start gap-6 md:gap-12 py-3 md:py-4">
             {sections.map((section) => (
               <button
                 key={section.id}
+                data-section={section.id}
                 onClick={() => scrollToSection(section.id)}
                 className={`text-xs md:text-sm font-bold uppercase tracking-widest transition-colors ${
                   activeSection === section.id ? "text-slate-900 border-b-2 border-slate-900" : "text-slate-700 hover:text-slate-900"
@@ -150,7 +169,7 @@ const ProgramsLayout = () => {
                   </div>
                   <div className={`absolute -bottom-6 ${index % 2 === 1 ? '-left-6' : '-right-6'} bg-[#FFDE00] p-6 md:p-10 rounded-3xl shadow-xl max-w-[240px]`}>
                     <p className="text-slate-900 font-bold font-raleway leading-tight">
-                      Making a difference for over 50,000+ individuals since 2014.
+                      Making a difference for over 50,000+ individuals since 2019.
                     </p>
                   </div>
                 </div>

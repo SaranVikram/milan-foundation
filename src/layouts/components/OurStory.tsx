@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Target, Eye, Heart, Shield, Users, BookOpen, HeartPulse, Handshake } from "lucide-react";
 
@@ -32,6 +32,21 @@ const OurStory = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (activeSection) {
+      const activeBtn = navRef.current?.querySelector(`[data-section="${activeSection}"]`);
+      if (activeBtn) {
+        activeBtn.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }
+  }, [activeSection]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -45,12 +60,16 @@ const OurStory = () => {
   return (
     <div className="bg-white">
       {/* Sticky Sub-Navigation */}
-      <div className="sticky top-0 z-40 bg-[#FFDE00] shadow-sm overflow-x-auto whitespace-nowrap">
+      <div 
+        ref={navRef}
+        className="sticky top-0 z-40 bg-[#FFDE00] shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
+      >
         <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-8 py-4">
+          <div className="flex md:justify-center justify-start gap-6 md:gap-8 py-3 md:py-4">
             {sections.map((section) => (
               <button
                 key={section.id}
+                data-section={section.id}
                 onClick={() => scrollToSection(section.id)}
                 className={`text-sm md:text-base font-bold uppercase tracking-wider transition-colors ${
                   activeSection === section.id ? "text-slate-900 border-b-2 border-slate-900" : "text-slate-700 hover:text-slate-900"
@@ -73,7 +92,7 @@ const OurStory = () => {
               Founded by <strong>Shyam Kumar</strong>, Milan Foundation was born out of a simple yet powerful belief: every individual deserves the opportunity to learn, grow, and achieve their full potential.
             </p>
             <p className="text-lg text-slate-600 leading-relaxed font-raleway">
-              What started as a small community initiative in Hyderabad has grown into a movement of hope. Over the past decade, we have worked tirelessly to bridge the gap in education, healthcare, and livelihood for the most underserved communities. Our story is not just about our growth, but about the thousands of lives that have been transformed through collective action and compassion.
+              What started as a small community initiative in Hyderabad has grown into a movement of hope. Since 2019, we have worked tirelessly to bridge the gap in education, healthcare, and livelihood for the most underserved communities. Our story is not just about our growth, but about the thousands of lives that have been transformed through collective action and compassion.
             </p>
           </div>
         </div>
@@ -141,9 +160,9 @@ const OurStory = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-[#FFDE00] p-8 rounded-3xl shadow-xl hidden lg:block">
-                <div className="text-4xl font-bebas text-slate-900 mb-1">10+ YEARS</div>
-                <div className="text-sm font-bold uppercase tracking-widest text-slate-700">OF IMPACT</div>
+              <div className="absolute -bottom-2 -right-2 w-24 h-24 md:-bottom-8 md:-right-8 md:w-48 md:h-48 bg-primary rounded-2xl md:rounded-[40px] flex flex-col items-center justify-center text-white z-20 shadow-xl">
+                <span className="text-2xl md:text-5xl font-bebas leading-none">7+</span>
+                <span className="text-[9px] md:text-sm uppercase tracking-widest font-bold text-center px-2 leading-tight">Years of Impact</span>
               </div>
             </div>
           </div>
